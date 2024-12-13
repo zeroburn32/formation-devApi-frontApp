@@ -1,0 +1,70 @@
+<div class="container">
+  <h2>Ajouter un Étudiant</h2>
+  <form (ngSubmit)="onSubmit()" #etudiantForm="ngForm">
+    <div>
+      <label for="code_foner">Code Foner</label>
+      <input type="text" id="code_foner" [(ngModel)]="etudiant.code_foner" name="code_foner" required />
+    </div>
+    <div>
+      <label for="nom">Nom</label>
+      <input type="text" id="nom" [(ngModel)]="etudiant.nom" name="nom" required />
+    </div>
+    <div>
+      <label for="prenoms">Prénoms</label>
+      <input type="text" id="prenoms" [(ngModel)]="etudiant.prenoms" name="prenoms" required />
+    </div>
+    <div>
+      <label for="telephone">Téléphone</label>
+      <input type="text" id="telephone" [(ngModel)]="etudiant.telephone" name="telephone" required />
+    </div>
+    <div>
+      <label for="email">Email</label>
+      <input type="email" id="email" [(ngModel)]="etudiant.email" name="email" required />
+    </div>
+    <div>
+      <label for="datenais">Date de Naissance</label>
+      <input type="date" id="datenais" [(ngModel)]="etudiant.datenais" name="datenais" required />
+    </div>
+    <div>
+      <label for="numeropiece">Numéro de Pièce</label>
+      <input type="text" id="numeropiece" [(ngModel)]="etudiant.numeropiece" name="numeropiece" required />
+    </div>
+    <div>
+      <label for="nbaide">Nombre Aide</label>
+      <input type="text" id="nbaide" [(ngModel)]="etudiant.nbaide" name="nbaide" required />
+    </div>
+    <div>
+      <label for="nbpret">Nombre Pret</label>
+      <input type="text" id="nbpret" [(ngModel)]="etudiant.nbpret" name="nbpret" required />
+    </div>
+    <button type="submit">Ajouter</button>
+  </form>
+
+  <h2>Etudiants</h2>
+  <div *ngIf="etudiants.length > 0; else noData">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Code Foner</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Phone</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let etudiant of etudiants; index as i">
+          <td>{{ i + 1 }}</td>
+          <td>{{ etudiant.code_foner }}</td>
+          <td>{{ etudiant.nom }} {{ etudiant.prenoms }}</td>
+          <td>{{ etudiant.email }}</td>
+          <td>{{ etudiant.telephone }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <ng-template #noData>
+    <p>No data available.</p>
+  </ng-template>
+</div>
